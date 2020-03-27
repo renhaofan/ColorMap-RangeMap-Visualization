@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1316</width>
-    <height>728</height>
+    <height>693</height>
    </rect>
   </property>
   <property name="cursor">
@@ -26,21 +26,21 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>170</y>
-     <width>56</width>
-     <height>15</height>
+     <x>820</x>
+     <y>70</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Option&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Option&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="RawImageLabel">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>160</y>
+     <x>80</x>
+     <y>110</y>
      <width>640</width>
      <height>480</height>
     </rect>
@@ -63,14 +63,14 @@ border-color: rgb(0, 0, 0);</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>650</y>
+     <x>340</x>
+     <y>610</y>
      <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;640&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;640&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -83,76 +83,33 @@ border-color: rgb(0, 0, 0);</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>400</y>
+     <y>350</y>
      <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;480&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;480&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>234</width>
-     <height>95</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QPushButton" name="LoadButton">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Load Image</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="AuthorLabel">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Author: haofan ren&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="EmailLabel">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Emails: yqykrhf@163.com&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>830</x>
-     <y>200</y>
+     <x>820</x>
+     <y>110</y>
      <width>402</width>
-     <height>415</height>
+     <height>475</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
      <widget class="QRadioButton" name="RawRadioButton">
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+      </property>
       <property name="text">
        <string>Raw</string>
       </property>
@@ -167,6 +124,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QRadioButton" name="AutumnRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Autumn</string>
           </property>
@@ -191,6 +151,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QRadioButton" name="BoneRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Bone  </string>
           </property>
@@ -212,6 +175,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QRadioButton" name="CoolRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Cool  </string>
           </property>
@@ -233,6 +199,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QRadioButton" name="HotRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Hot   </string>
           </property>
@@ -254,6 +223,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QRadioButton" name="HsvRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Hsv   </string>
           </property>
@@ -275,6 +247,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QRadioButton" name="JetRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Jet</string>
           </property>
@@ -296,6 +271,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
          <widget class="QRadioButton" name="OceanRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Ocean</string>
           </property>
@@ -317,6 +295,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
          <widget class="QRadioButton" name="ParulaRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Parula</string>
           </property>
@@ -338,6 +319,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_9">
         <item>
          <widget class="QRadioButton" name="PinkRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Pink</string>
           </property>
@@ -359,6 +343,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
          <widget class="QRadioButton" name="RainbowRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Rainbow</string>
           </property>
@@ -380,6 +367,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_11">
         <item>
          <widget class="QRadioButton" name="SpringRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Spring</string>
           </property>
@@ -401,6 +391,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_12">
         <item>
          <widget class="QRadioButton" name="SummerRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Summer</string>
           </property>
@@ -422,6 +415,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_13">
         <item>
          <widget class="QRadioButton" name="TurboRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Turbo</string>
           </property>
@@ -443,6 +439,9 @@ border-color: rgb(0, 0, 0);</string>
        <layout class="QHBoxLayout" name="horizontalLayout_14">
         <item>
          <widget class="QRadioButton" name="WinterRadioButton">
+          <property name="styleSheet">
+           <string notr="true">font: 10pt &quot;Arial&quot;;</string>
+          </property>
           <property name="text">
            <string>Winter</string>
           </property>
@@ -463,6 +462,54 @@ border-color: rgb(0, 0, 0);</string>
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="LoadButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>30</y>
+     <width>231</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 11pt &quot;Arial Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Load Image</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="AuthorLabel">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>610</y>
+     <width>180</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Author: haofan ren&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="EmailLabel">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>640</y>
+     <width>230</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Emails: yqykrhf@163.com&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
