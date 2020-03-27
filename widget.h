@@ -11,7 +11,17 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 
+#include <QFileDialog>
+#include <QMessageBox>
 
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QUrl>
+#include <QList>
+#include <QMimeData>
+
+// for Debug
+#include <QDebug>
 namespace Ui {
 class Widget;
 }
@@ -25,15 +35,22 @@ public:
     ~Widget();
 
 private slots:
-    void on_LoadButton_clicked();
-    void on_OptionGroups();
-
+    void on_LoadButton_clicked(); // load button
+    void on_OptionGroups(); // Radio clicked slot function
+    // draw image
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
+    // init ColorSale
+    void initColoScale();
+//    bool eventFilter(QObject *watched, QEvent *event);
 
 //    void on_AutumnRadioButton_toggled(bool checked);
 
 //    void on_BoneRadioButton_toggled(bool checked);
 
 //    void on_AutumnRadioButton_clicked();
+
+
 
 private:
     Ui::Widget *ui;

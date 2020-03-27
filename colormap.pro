@@ -48,12 +48,13 @@ INCLUDEPATH += \
 
 
 LIBS += \
-    C:/OpenCV345/opencv/build/x64/vc15/lib/opencv_world345D.lib \
-    C:/OpenCV345/opencv/build/x64/vc15/lib/opencv_world345.lib
+     C:/OpenCV345/opencv/build/x64/vc15/lib/opencv_world345.lib \
+     C:/OpenCV345/opencv/build/x64/vc15/lib/opencv_world345d.lib
 
 
 
 
+RC_FILE=logo.rc
 
 
 RESOURCES += \

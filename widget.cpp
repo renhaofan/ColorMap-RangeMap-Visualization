@@ -1,7 +1,5 @@
 #include "widget.h"
 #include "ui_widget.h"
-#include <QFileDialog>
-#include <QMessageBox>
 
 
 
@@ -52,7 +50,7 @@ QImage cvMat2QImage(const Mat &mat)
     return QImage();
 }
 
-cv::Mat image2autumn(const cv::Mat src) {
+cv::Mat image2autumn(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -97,7 +95,7 @@ cv::Mat image2autumn(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2bone(const cv::Mat src) {
+cv::Mat image2bone(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -142,7 +140,7 @@ cv::Mat image2bone(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2cool(const cv::Mat src) {
+cv::Mat image2cool(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -187,7 +185,7 @@ cv::Mat image2cool(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2hot(const cv::Mat src) {
+cv::Mat image2hot(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -232,7 +230,7 @@ cv::Mat image2hot(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2hsv(const cv::Mat src) {
+cv::Mat image2hsv(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -277,7 +275,7 @@ cv::Mat image2hsv(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2jet(const cv::Mat src) {
+cv::Mat image2jet(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -322,7 +320,7 @@ cv::Mat image2jet(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2ocean(const cv::Mat src) {
+cv::Mat image2ocean(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -367,7 +365,7 @@ cv::Mat image2ocean(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2parula(const cv::Mat src) {
+cv::Mat image2parula(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -412,7 +410,7 @@ cv::Mat image2parula(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2pink(const cv::Mat src) {
+cv::Mat image2pink(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -457,7 +455,7 @@ cv::Mat image2pink(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2rainbow(const cv::Mat src) {
+cv::Mat image2rainbow(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -502,7 +500,7 @@ cv::Mat image2rainbow(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2spring(const cv::Mat src) {
+cv::Mat image2spring(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -547,7 +545,7 @@ cv::Mat image2spring(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2summer(const cv::Mat src) {
+cv::Mat image2summer(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -592,7 +590,7 @@ cv::Mat image2summer(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2turbo(const cv::Mat src) {
+cv::Mat image2turbo(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -637,7 +635,7 @@ cv::Mat image2turbo(const cv::Mat src) {
     cv::merge(t, dst);
     return dst;
 }
-cv::Mat image2winter(const cv::Mat src) {
+cv::Mat image2winter(const cv::Mat& src) {
     cv::Mat b = src.clone();
     if (src.type() != CV_8UC1) {
         double min;
@@ -683,10 +681,75 @@ cv::Mat image2winter(const cv::Mat src) {
     return dst;
 }
 
+//cv::Mat depth2normal(const cv::Mat &src) {
+//    cv::Mat normal = cv::Mat(src.size(), CV_8UC3, cv::Scalar(0));
+//    for (int y = 0; y < src.rows; ++y)
+//    {
+//        for (int x = 0; x < src.cols; ++x)
+//        {
+//            ushort d = src.ptr<ushort>(y)[x];
+//            if ( (x + 1) >= src.cols || (y + 1) >= src.rows || d == 0) {
+//                continue;
+//            }
+//            cv::Vec3b center(src.at<cv::Vec3b>(y, x));
+//            cv::Vec3b center_down_neibor(src.at<cv::Vec3b>(y+1, x));
+//            cv::Vec3b center_right_neibor(src.at<cv::Vec3b>(y, x+1));
+//            center_right_neibor -= center;
+//            center_down_neibor -= center;
+//            cv::Vec3b n = center_down_neibor.cross(center_right_neibor);
+//            normal.at<cv::Vec3b>(y, x) = cv::normalize(n);
+//        }
+//    }
+//    return normal;
+//}
 
+// DEBUG
+void PrintMat(const cv::Mat &one_channel_image) {
+    if (one_channel_image.empty()) {
+        cout << "PrintMat: image is empty";
+        return;
+    }
+
+    for (int y = 0; y < one_channel_image.rows; y++) {
+        for (int x = 0; x < one_channel_image.cols; x++) {
+            /*cout << one_channel_image.at<float>(y, x);
+            cout << " ";*/
+            printf("%7.6f ", one_channel_image.at<double>(y, x));
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
 //const int CHOICES = 14;
 
+void Widget::initColoScale()
+{
+//    cv::Mat disp(cv::Size(ui->AutumnScaleLabel->width(), ui->AutumnScaleLabel->height()), CV_8UC1, cv::Scalar(0));
+    cv::Mat disp(cv::Size(256, 19), CV_8UC1, cv::Scalar(0));
 
+    for (int y = 0; y < disp.rows; y++)
+    {
+        for (int x = 0; x < disp.cols; x++)
+        {
+            disp.at<uchar>(y, x) = static_cast<uchar>(x);
+        }
+    }
+
+    ui->AutumnScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2autumn(disp))));
+    ui->BoneScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2bone(disp))));
+    ui->CoolScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2cool(disp))));
+    ui->HotScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2hot(disp))));
+    ui->HsvScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2hsv(disp))));
+    ui->JetScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2jet(disp))));
+    ui->OceanScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2ocean(disp))));
+    ui->ParulaScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2parula(disp))));
+    ui->PinkScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2pink(disp))));
+    ui->RainbowScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2rainbow(disp))));
+    ui->SpringScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2spring(disp))));
+    ui->SummerScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2summer(disp))));
+    ui->TurboScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2turbo(disp))));
+    ui->WinterScaleLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(image2winter(disp))));
+}
 
 
 Widget::Widget(QWidget *parent) :
@@ -694,26 +757,40 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    // set up for drawing image on label to display
+    this->setAcceptDrops(true);
+    ui->RawImageLabel->setAcceptDrops(true);
 
     //  set up the lable border and initilize some variables
-    ui->RawImageLabel->setStyleSheet("QLabel{border:2px solid rgb(0, 0, 0);}");
+    //ui->RawImageLabel->setStyleSheet("QLabel{border:3px solid rgb(0, 0, 0);}");
+    ui->RawImageLabel->setStyleSheet("background-color:gray");
 
+    // init scaleLabel
+    initColoScale();
+
+    // init radionLable
     OptionGroups = new QButtonGroup(this);
-    OptionGroups->addButton(ui->AutumnRadioButton, 0);
-    OptionGroups->addButton(ui->BoneRadioButton, 1);
-    OptionGroups->addButton(ui->CoolRadioButton, 2);
-    OptionGroups->addButton(ui->HotRadioButton, 3);
-    OptionGroups->addButton(ui->HsvRadioButton, 4);
-    OptionGroups->addButton(ui->JetRadioButton, 5);
-    OptionGroups->addButton(ui->OceanRadioButton, 6);
-    OptionGroups->addButton(ui->ParulaRadioButton, 7);
-    OptionGroups->addButton(ui->PinkRadioButton, 8);
-    OptionGroups->addButton(ui->RainbowRadioButton, 9);
-    OptionGroups->addButton(ui->SpringRadioButton, 10);
-    OptionGroups->addButton(ui->SummerRadioButton, 11);
-    OptionGroups->addButton(ui->TurboRadioButton, 12);
-    OptionGroups->addButton(ui->WinterRadioButton, 13);
-    ui->TurboRadioButton->setChecked(true);
+    OptionGroups->addButton(ui->RawRadioButton, 0);
+    OptionGroups->addButton(ui->AutumnRadioButton, 1);
+    OptionGroups->addButton(ui->BoneRadioButton, 2);
+    OptionGroups->addButton(ui->CoolRadioButton, 3);
+    OptionGroups->addButton(ui->HotRadioButton, 4);
+    OptionGroups->addButton(ui->HsvRadioButton, 5);
+    OptionGroups->addButton(ui->JetRadioButton, 6);
+    OptionGroups->addButton(ui->OceanRadioButton, 7);
+    OptionGroups->addButton(ui->ParulaRadioButton, 8);
+    OptionGroups->addButton(ui->PinkRadioButton, 9);
+    OptionGroups->addButton(ui->RainbowRadioButton, 10);
+    OptionGroups->addButton(ui->SpringRadioButton, 11);
+    OptionGroups->addButton(ui->SummerRadioButton, 12);
+    OptionGroups->addButton(ui->TurboRadioButton, 13);
+    OptionGroups->addButton(ui->WinterRadioButton, 14);
+
+    // init checked option
+    ui->AutumnRadioButton->setChecked(true);
+
+
+    connect(ui->RawRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
     connect(ui->AutumnRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
     connect(ui->BoneRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
     connect(ui->CoolRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
@@ -728,13 +805,51 @@ Widget::Widget(QWidget *parent) :
     connect(ui->SummerRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
     connect(ui->TurboRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
     connect(ui->WinterRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
-
-
 }
 
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::dragEnterEvent(QDragEnterEvent *event)
+{
+    if (event->type() != QEvent::DragEnter) return;
+    if (!event->mimeData()->urls()[0].fileName().right(3).compare("bmp") ||
+        !event->mimeData()->urls()[0].fileName().right(3).compare("jpg") ||
+        !event->mimeData()->urls()[0].fileName().right(3).compare("pbm") ||
+        !event->mimeData()->urls()[0].fileName().right(3).compare("pgm") ||
+        !event->mimeData()->urls()[0].fileName().right(3).compare("png") ||
+        !event->mimeData()->urls()[0].fileName().right(3).compare("ppm") ||
+        !event->mimeData()->urls()[0].fileName().right(3).compare("xbm") ||
+        !event->mimeData()->urls()[0].fileName().right(3).compare("xpm"))
+    {
+        event->acceptProposedAction();
+    }
+    else
+    {
+        event->ignore();
+    }
+}
+void Widget::dropEvent(QDropEvent *event)
+{
+    if (event->type() != QEvent::Drop) return;
+    QList<QUrl> urls = event->mimeData()->urls();
+    QString path = urls.first().toLocalFile();
+    if (!path.isEmpty())
+    {
+        //src = imread(string((const char *)path.toLocal8Bit()), -1);
+        string tmp = static_cast<string>(static_cast<const char*>(path.toLocal8Bit()));
+        src = imread(tmp, -1);
+        if (src.channels() > 1)
+        {
+            ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(src)));
+        }
+        else
+        {
+            on_OptionGroups();
+        }
+    }
 }
 
 void Widget::on_OptionGroups()
@@ -743,58 +858,62 @@ void Widget::on_OptionGroups()
     switch (OptionGroups->checkedId())
     {
         case 0:
-            colormap = image2autumn(src);
+            colormap = src.clone();
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 1:
-            colormap = image2bone(src);
+            colormap = image2autumn(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 2:
-            colormap = image2cool(src);
+            colormap = image2bone(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 3:
-            colormap = image2hot(src);
+            colormap = image2cool(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 4:
-            colormap = image2hsv(src);
+            colormap = image2hot(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 5:
-            colormap = image2jet(src);
+            colormap = image2hsv(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 6:
-            colormap = image2ocean(src);
+            colormap = image2jet(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 7:
-            colormap = image2parula(src);
+            colormap = image2ocean(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 8:
-            colormap = image2pink(src);
+            colormap = image2parula(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 9:
-            colormap = image2rainbow(src);
+            colormap = image2pink(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 10:
-            colormap = image2spring(src);
+            colormap = image2rainbow(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 11:
-            colormap = image2summer(src);
+            colormap = image2spring(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 12:
-            colormap = image2turbo(src);
+            colormap = image2summer(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
         case 13:
+            colormap = image2turbo(src);
+            ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
+            break;
+        case 14:
             colormap = image2winter(src);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
             break;
@@ -807,7 +926,7 @@ void Widget::on_LoadButton_clicked()
     QPixmap image;
     QString fileName = QFileDialog::getOpenFileName(
                     this, tr("open image file"),
-                    "./", tr("Image files(*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)"));
+                    "./", tr("Image files(*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm *.ico);;All files (*.*)"));
     if (fileName.isEmpty())
     {
 //        QMessageBox mes;
@@ -816,9 +935,13 @@ void Widget::on_LoadButton_clicked()
     }
     else
     {
-        src = imread(fileName.toLatin1().data(), -1);
+        // src = imread(fileName.toLatin1().data(), -1);
+        // solve the chinese path
+        string tmp = static_cast<string>(static_cast<const char*>(fileName.toLocal8Bit()));
+        src = imread(tmp, -1);
         if (src.channels() > 1)
         {
+            //ui->RawImageLabel->resize(width,height);
             ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(src)));
         }
         else
@@ -860,3 +983,6 @@ void Widget::on_LoadButton_clicked()
 //{
 //    qDebug() << "Autumn button is checked !";
 //}
+
+
+
