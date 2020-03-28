@@ -31,6 +31,7 @@ QImage cvMat2QImage(const Mat &mat)
          // 8位单通道
          case CV_8UC1:
          {
+
             static QVector<QRgb>  sColorTable;
             // only create our color table once
             if ( sColorTable.isEmpty() )
@@ -42,10 +43,38 @@ QImage cvMat2QImage(const Mat &mat)
             image.setColorTable( sColorTable );
             return image;
          }
+        case CV_16UC1:
+        {
+            cv::Mat tmp;
+            double min;
+            double max;
+            cv::minMaxIdx(mat, &min, &max);
+            // expand your range to 0..255. Similar to histEq();
+            mat.convertTo(tmp, CV_8UC1, 255 / (max - min), -min);
 
-         default:
+            QImage image(tmp.cols, tmp.rows, QImage::Format_Indexed8);
+                    // Set the color table (used to translate colour indexes to qRgb values)
+            image.setColorCount(256);
+            for(int i = 0; i < 256; i++)
+            {
+                image.setColor(i, qRgb(i, i, i));
+            }
+            // Copy input Mat
+            uchar *pSrc = tmp.data;
+            for(int row = 0; row < tmp.rows; row++)
+            {
+                uchar *pDest = image.scanLine(row);
+                memcpy(pDest, pSrc, static_cast<size_t>(tmp.cols));
+                pSrc += static_cast<size_t>(tmp.step);
+            }
+            return image;
+        }
+
+        default:
+        {
             qDebug("Image format is not supported: depth=%d and %d channels\n", mat.depth(), mat.channels());
             break;
+        }
       }
     return QImage();
 }
@@ -761,6 +790,7 @@ Widget::Widget(QWidget *parent) :
     this->setAcceptDrops(true);
     ui->RawImageLabel->setAcceptDrops(true);
 
+
     //  set up the lable border and initilize some variables
     //ui->RawImageLabel->setStyleSheet("QLabel{border:3px solid rgb(0, 0, 0);}");
     ui->RawImageLabel->setStyleSheet("background-color:gray");
@@ -815,14 +845,15 @@ Widget::~Widget()
 void Widget::dragEnterEvent(QDragEnterEvent *event)
 {
     if (event->type() != QEvent::DragEnter) return;
-    if (!event->mimeData()->urls()[0].fileName().right(3).compare("bmp") ||
-        !event->mimeData()->urls()[0].fileName().right(3).compare("jpg") ||
-        !event->mimeData()->urls()[0].fileName().right(3).compare("pbm") ||
-        !event->mimeData()->urls()[0].fileName().right(3).compare("pgm") ||
-        !event->mimeData()->urls()[0].fileName().right(3).compare("png") ||
-        !event->mimeData()->urls()[0].fileName().right(3).compare("ppm") ||
-        !event->mimeData()->urls()[0].fileName().right(3).compare("xbm") ||
-        !event->mimeData()->urls()[0].fileName().right(3).compare("xpm"))
+    // for linux:event->mimeData()->urls()[0].toLocalFile().right(3).compare("bmp")
+    if (!event->mimeData()->urls()[0].toLocalFile().right(3).compare("bmp") ||
+        !event->mimeData()->urls()[0].toLocalFile().right(3).compare("jpg") ||
+        !event->mimeData()->urls()[0].toLocalFile().right(3).compare("pbm") ||
+        !event->mimeData()->urls()[0].toLocalFile().right(3).compare("pgm") ||
+        !event->mimeData()->urls()[0].toLocalFile().right(3).compare("png") ||
+        !event->mimeData()->urls()[0].toLocalFile().right(3).compare("ppm") ||
+        !event->mimeData()->urls()[0].toLocalFile().right(3).compare("xbm") ||
+        !event->mimeData()->urls()[0].toLocalFile().right(3).compare("xpm"))
     {
         event->acceptProposedAction();
     }
@@ -850,6 +881,11 @@ void Widget::dropEvent(QDropEvent *event)
             on_OptionGroups();
         }
     }
+    else
+    {
+        QMessageBox mes;
+        mes.warning(this, tr("warning!"),tr("Failed to open image"));
+    }
 }
 
 void Widget::on_OptionGroups()
@@ -858,8 +894,8 @@ void Widget::on_OptionGroups()
     switch (OptionGroups->checkedId())
     {
         case 0:
-            colormap = src.clone();
-            ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(colormap)));
+            //colormap = src.clone();
+            ui->RawImageLabel->setPixmap(QPixmap::fromImage(cvMat2QImage(src)));
             break;
         case 1:
             colormap = image2autumn(src);
@@ -929,8 +965,8 @@ void Widget::on_LoadButton_clicked()
                     "./", tr("Image files(*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm *.ico);;All files (*.*)"));
     if (fileName.isEmpty())
     {
-//        QMessageBox mes;
-//        mes.warning(this, tr("warning!"),tr("Failed to open image"));
+        QMessageBox mes;
+        mes.warning(this, tr("warning!"),tr("Failed to open image"));
         return;
     }
     else
