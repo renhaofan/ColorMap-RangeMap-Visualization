@@ -786,6 +786,10 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    // set up fixed size
+    this->setFixedSize(this->size());
+
+
     // set up for drawing image on label to display
     this->setAcceptDrops(true);
     ui->RawImageLabel->setAcceptDrops(true);
