@@ -962,7 +962,6 @@ void Widget::on_OptionGroups()
 
 void Widget::on_LoadButton_clicked()
 {
-
     QPixmap image;
     QString fileName = QFileDialog::getOpenFileName(
                     this, tr("open image file"),
@@ -993,7 +992,15 @@ void Widget::on_LoadButton_clicked()
 
 }
 
-
+void Widget::Widget::keyPressEvent(QKeyEvent *event)
+{
+   switch(event->key()) {
+     //进行界面退出，重写Esc键，否则重写reject()方法
+      case Qt::Key_Escape:
+          this->close();
+          break;
+   }
+}
 
 //void Widget::on_AutumnRadioButton_toggled(bool checked)
 //{

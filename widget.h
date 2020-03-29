@@ -52,12 +52,16 @@ private slots:
 
 
 
+
+
 private:
     Ui::Widget *ui;
 
     cv::Mat src;
     cv::Mat colormap;
     QButtonGroup *OptionGroups;
+
+    void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // WIDGET_H
