@@ -885,11 +885,11 @@ void Widget::dropEvent(QDropEvent *event)
             on_OptionGroups();
         }
     }
-    else
-    {
-        QMessageBox mes;
-        mes.warning(this, tr("warning!"),tr("Failed to open image"));
-    }
+//    else
+//    {
+//        QMessageBox mes;
+//        mes.warning(this, tr("warning!"),tr("Failed to open image"));
+//    }
 }
 
 void Widget::on_OptionGroups()
@@ -969,8 +969,8 @@ void Widget::on_LoadButton_clicked()
                     "./", tr("Image files(*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm *.ico);;All files (*.*)"));
     if (fileName.isEmpty())
     {
-        QMessageBox mes;
-        mes.warning(this, tr("warning!"),tr("Failed to open image"));
+//        QMessageBox mes;
+//        mes.warning(this, tr("warning!"),tr("Failed to open image"));
         return;
     }
     else
