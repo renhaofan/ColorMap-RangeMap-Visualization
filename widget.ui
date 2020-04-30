@@ -227,7 +227,7 @@ border-color: rgb(0, 0, 0);</string>
            <string notr="true">font: 10pt &quot;Arial&quot;;</string>
           </property>
           <property name="text">
-           <string>Hsv   </string>
+           <string>HSV   </string>
           </property>
          </widget>
         </item>
