@@ -1031,8 +1031,6 @@ void Widget::Widget::keyPressEvent(QKeyEvent *event)
 //}
 
 
-
-
 void Widget::on_SaveButton_clicked()
 {
     const QPixmap * pix = ui->RawImageLabel->pixmap();
