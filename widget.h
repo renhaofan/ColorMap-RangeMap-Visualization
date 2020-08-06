@@ -54,6 +54,8 @@ private slots:
 
 
 
+    void on_SaveButton_clicked();
+
 private:
     Ui::Widget *ui;
 

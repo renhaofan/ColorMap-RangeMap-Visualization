@@ -1033,3 +1033,17 @@ void Widget::Widget::keyPressEvent(QKeyEvent *event)
 
 
 
+
+void Widget::on_SaveButton_clicked()
+{
+    const QPixmap * pix = ui->RawImageLabel->pixmap();
+    if (pix)
+    {
+        QImage saveImg  = pix->toImage();
+        QString savename = QFileDialog::getSaveFileName(this,tr("Save Image"),"",tr("Images (*.png *.bmp *.jpg)")); //选择路径
+        if (!savename.isEmpty())
+        {
+            saveImg.save(savename);
+        }
+    }
+}
