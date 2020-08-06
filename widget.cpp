@@ -821,8 +821,7 @@ Widget::Widget(QWidget *parent) :
     OptionGroups->addButton(ui->WinterRadioButton, 14);
 
     // init checked option
-    ui->AutumnRadioButton->setChecked(true);
-
+    ui->RawRadioButton->setChecked(true);
 
     connect(ui->RawRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
     connect(ui->AutumnRadioButton, SIGNAL(clicked()), this, SLOT(on_OptionGroups()));
