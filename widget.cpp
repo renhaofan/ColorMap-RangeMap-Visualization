@@ -1037,7 +1037,7 @@ void Widget::on_SaveButton_clicked()
     if (pix)
     {
         QImage saveImg  = pix->toImage();
-        QString savename = QFileDialog::getSaveFileName(this,tr("Save Image"),"",tr("Images (*.png *.bmp *.jpg)")); //选择路径
+        QString savename = QFileDialog::getSaveFileName(this,tr("Save Image"),"",tr("Images (*.png *.bmp *.jpg *.ppm *.pgm)")); //选择路径
         if (!savename.isEmpty())
         {
             saveImg.save(savename);
