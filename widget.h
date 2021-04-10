@@ -1,9 +1,11 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
+
+
+
 #include <QWidget>
 #include <QButtonGroup>
-
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
@@ -19,6 +21,8 @@
 #include <QUrl>
 #include <QList>
 #include <QMimeData>
+
+
 
 // for Debug
 #include <QDebug>

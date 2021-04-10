@@ -3,6 +3,9 @@
 # Project created by QtCreator 2020-01-01T20:53:27
 #
 #-------------------------------------------------
+!versionAtLeast(QT_VERSION, 5.13.0) {
+  message("Need Qt 5.13 for QImage::Format_Grayscale16 support. See QTBUG-41176")
+}
 
 QT       += core gui
 
@@ -32,11 +35,11 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    widget.cpp
+    widget.cpp \
 
 HEADERS += \
         widget.h \
-    widget.h
+    widget.h \
 
 FORMS += \
         widget.ui
