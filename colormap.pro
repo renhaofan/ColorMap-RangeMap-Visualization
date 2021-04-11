@@ -36,20 +36,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-<<<<<<< HEAD
-    widget.cpp \
-
-HEADERS += \
-        widget.h \
-    widget.h \
-=======
     imageviewer.cpp \
     pcolor.cpp
 
 HEADERS += \
         imageviewer.h \
         pcolor.h
->>>>>>> intensity
 
 FORMS += \
         imageviewer.ui
