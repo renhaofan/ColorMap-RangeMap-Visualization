@@ -36,36 +36,30 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
+<<<<<<< HEAD
     widget.cpp \
 
 HEADERS += \
         widget.h \
     widget.h \
+=======
+    imageviewer.cpp \
+    pcolor.cpp
+
+HEADERS += \
+        imageviewer.h \
+        pcolor.h
+>>>>>>> intensity
 
 FORMS += \
-        widget.ui
+        imageviewer.ui
+
+RC_FILE += logo.rc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-INCLUDEPATH += \
-    C:\OpenCV345\opencv\build\include\opencv2 \
-    C:\OpenCV345\opencv\build\include\opencv \
-    C:\OpenCV345\opencv\build\include \
 
 
-
-LIBS += \
-     C:/OpenCV345/opencv/build/x64/vc15/lib/opencv_world345.lib \
-     C:/OpenCV345/opencv/build/x64/vc15/lib/opencv_world345d.lib
-
-
-
-
-RC_FILE=logo.rc
-
-
-RESOURCES += \
-    colormapScale/colormapscale.qrc
