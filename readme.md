@@ -1,5 +1,5 @@
 # Visualize Depthmap
-![demo](https://github.com/renhaofan/colormap/blob/master/images/demo/demo.gif)
+![demo](https://github.com/renhaofan/colormap/blob/master/images/demo/demoV2.gif)
 
 Some test images are located in folder `/images/test`
 
