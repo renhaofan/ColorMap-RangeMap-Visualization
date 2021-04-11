@@ -754,7 +754,7 @@ QImage test2autumn(const QImage& Image) {
 //        {
 //               colorTable.push_back( qRgb(k,k,k) );
 //        }
-
+    qDebug() << Image.format();
     QImage ret;
 //    ret = QImage(Image.width(), Image.height(), QImage::Format_Indexed8);
 //    ret = QImage(Image.width(), Image.height(), QImage::Format_Grayscale8);
@@ -799,9 +799,11 @@ QImage test16autumn(const QImage& Image) {
     int width = Image.width();
     int height = Image.height();
 
-    uchar* data8 = new uchar[width*height]();
-    QImage ret;
-    ret = QImage(data8, width, height, QImage::Format_Grayscale8);
+//    uchar* data8 = new uchar[width*height]();
+//    memset(data8, 0, width*height*sizeof(uchar));
+//    QImage ret;
+
+    QImage ret = QImage(width, height, QImage::Format_Grayscale8);
 
     double mmax = 0, mmin = 0;
     quint16 val = 0;
@@ -815,10 +817,15 @@ QImage test16autumn(const QImage& Image) {
         }
     }
     for (int y = 0 ; y < height; y++) {
-        quint16 *dst = const_cast<quint16*>(reinterpret_cast<const quint16*>(Image.scanLine(y)));
-        data8 = ret.scanLine(y);
+        ushort *dst = const_cast<ushort*>(reinterpret_cast<const ushort*>(Image.scanLine(y)));
+        uchar* row = ret.scanLine(y);
         for (int x = 0; x < width; x++) {
-            data8[x] = (dst[x] - mmin) / (mmax - mmin) * 255;
+//            uchar tmp;
+//            tmp = static_cast<uchar>(dst[x] - mmin/ (mmax - mmin)* 255);
+//            data8[x] = tmp;
+            row[x] = (dst[x] - mmin)/ (mmax - mmin)* 255;
+//            data8[x] = static_cast<uchar>((dst[x] - mmin) / (mmax - mmin) * 255);
+//            data8[x] = static_cast<uchar>(dst[x]);
         }
     }
     return ret;
