@@ -450,6 +450,18 @@ void ImageViewer::on_actionPrint_triggered()
 #endif
 }
 
+void ImageViewer::wheelEvent(QWheelEvent *event)
+{
+    if (raw_image.isNull()) return;
+    if(event->delta() > 0) // default 15 degree once
+    {
+        scaleImage(1.25);
+    } else
+    {
+        scaleImage(0.8);
+    }
+}
+
 void ImageViewer::on_actionExit_triggered()
 {
     this->close();

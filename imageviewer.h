@@ -8,6 +8,7 @@
 #include <QButtonGroup>
 #ifndef QT_NO_PRINTER
 #include <QPrinter>
+#include <QMouseEvent>
 #endif
 
 namespace Ui {
@@ -26,6 +27,8 @@ private slots:
     void dropEvent(QDropEvent *event);
 
     void dragEnterEvent(QDragEnterEvent *event);
+
+    void wheelEvent(QWheelEvent *event);
 
     void on_actionOpen_triggered();
 
