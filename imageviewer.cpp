@@ -9,14 +9,7 @@
 
 
 
-bool channelsMormThan1(const QImage& img) {
-    // based on Qt 5.14.2
-    int format = img.format();
-    if ((format >= 4 && format <= 22) || (format >= 25 && format <= 29 && format != QImage::Format_Grayscale16))
-        return true;
-    else
-        return false;
-}
+
 static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
 {
     static bool firstDialog = true;

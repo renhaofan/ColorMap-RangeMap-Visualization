@@ -2,7 +2,15 @@
 #define PCOLOR_H
 #include <QImage>
 
+/*
+ *  This is implementation for pesudo color
+ *  Make sure Qt version more than Qt 5.13
+ *  Need Qt 5.13 for QImage::Format_Grayscale16 support. See QTBUG-41176
+*/
+
 QImage convertGray16ToGray8(const QImage& img);
+bool channelsMormThan1(const QImage& img);
+
 QImage image2autumn(const QImage& img);
 QImage image2bone(const QImage& img);
 QImage image2cool(const QImage& img);

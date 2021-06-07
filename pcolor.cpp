@@ -1,6 +1,19 @@
 #include "pcolor.h"
 
+// Need Qt 5.13 for QImage::Format_Grayscale16 support. See QTBUG-41176
+
 #pragma region(pcolor)
+
+bool channelsMormThan1(const QImage& img) {
+    // based on Qt 5.14.2
+    // QImage::Format follow https://doc.qt.io/qt-5/qimage.html
+    int format = img.format();
+    if ((format >= 4 && format <= 22) || (format >= 25 && format <= 29 && format != QImage::Format_Grayscale16))
+        return true;
+    else
+        return false;
+}
+
 QImage convertGray16ToGray8(const QImage& img) {
     int width = img.width();
     int height = img.height();
