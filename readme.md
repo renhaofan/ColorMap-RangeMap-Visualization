@@ -1,5 +1,8 @@
 # Visualize Depthmap
+Icon from ![Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+
 ![demo](https://github.com/renhaofan/colormap/blob/master/images/demo/demoV2.gif)
+
 
 Some test images are located in folder `/images/test`
 

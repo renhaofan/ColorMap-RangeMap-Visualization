@@ -61,7 +61,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
 
     createDockWindows();
 
-
+    setWindowIcon(QIcon(":/icon/images/icon/colormap.png"));
     setWindowTitle(tr("Depthmap Visualization"));
     resize(1000, 400);
 
