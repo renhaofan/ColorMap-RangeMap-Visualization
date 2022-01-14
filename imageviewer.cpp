@@ -58,11 +58,32 @@ ImageViewer::ImageViewer(QWidget *parent) :
 
     setCentralWidget(scrollArea);
 
-
     createDockWindows();
 
-    setWindowIcon(QIcon(":/icon/images/icon/colormap.png"));
-    setWindowTitle(tr("Depthmap Visualization"));
+    icon = new QIcon(":/icon/images/icon/colormap.png");
+    trayMenu = new QMenu;
+    systemTray = new QSystemTrayIcon;
+    systemTray->setIcon(*icon);
+    systemTray->setToolTip("Rangemap Visualization"); // context help
+    minimumAct = new QAction("Minimum Window");
+    maximumAct = new QAction("Maximum Window");
+    restoreAct = new QAction("Display");
+    quitAct = new QAction("Exit");
+    connect(minimumAct, SIGNAL(triggered()), this, SLOT(hide()));
+    connect(maximumAct, SIGNAL(triggered()), this, SLOT(showMaximized()));
+    connect(restoreAct, SIGNAL(triggered()), this, SLOT(showNormal()));
+    connect(quitAct, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(systemTray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason)));
+    trayMenu->addAction(minimumAct);
+    trayMenu->addAction(maximumAct);
+    trayMenu->addAction(restoreAct);
+    trayMenu->addSeparator();
+    trayMenu->addAction(quitAct);
+    systemTray->setContextMenu(trayMenu);
+    systemTray->show();
+
+    setWindowIcon(*icon);
+    setWindowTitle(tr("Rangemap Visualization"));
     resize(1000, 400);
 
 
@@ -452,6 +473,38 @@ void ImageViewer::wheelEvent(QWheelEvent *event)
     } else
     {
         scaleImage(0.8);
+    }
+}
+
+void ImageViewer::closeEvent(QCloseEvent *event)
+{
+    //! if menu bar exit triggered, exit program, not hide
+    if (exitAct->isChecked())
+    {
+        if (systemTray->isVisible())
+        {
+            hide();
+            // display 3 seconds
+            systemTray->showMessage(QString("Tray mode"), QString("Running in tray mode"), QSystemTrayIcon::Information, 3000);
+            event->ignore();
+        }
+    }
+}
+
+void ImageViewer::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
+{
+    switch(reason)
+    {
+        case QSystemTrayIcon::Trigger:
+            //单击托盘图标
+            break;
+        case QSystemTrayIcon::DoubleClick:
+            //双击托盘图标
+            //双击后显示主程序窗口
+            this->show();
+            break;
+        default:
+            break;
     }
 }
 

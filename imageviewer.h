@@ -6,6 +6,7 @@
 #include <QScrollArea>
 #include <QDockWidget>
 #include <QButtonGroup>
+#include <QSystemTrayIcon>
 #ifndef QT_NO_PRINTER
 #include <QPrinter>
 #include <QMouseEvent>
@@ -24,11 +25,15 @@ public:
     ~ImageViewer();
 
 private slots:
-    void dropEvent(QDropEvent *event);
+    void dropEvent(QDropEvent *event) override;
 
-    void dragEnterEvent(QDragEnterEvent *event);
+    void dragEnterEvent(QDragEnterEvent *event) override;
 
-    void wheelEvent(QWheelEvent *event);
+    void wheelEvent(QWheelEvent *event) override;
+
+    void closeEvent(QCloseEvent *event) override;
+
+    void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 
     void on_actionOpen_triggered();
 
@@ -54,16 +59,27 @@ private slots:
 
 private:
     Ui::ImageViewer *ui;
+    QIcon *icon;
 
+    //! range-map visualization concerned
     QImage raw_image; // raw image
     QImage image; // pcolor
-
-
     QLabel *imageLabel;
     QScrollArea *scrollArea;
     QButtonGroup *optionGroups;
     QDockWidget *dock;
 
+    //! system tray concerned
+    QSystemTrayIcon *systemTray;
+    QMenu *trayMenu;
+    QAction *minimumAct;
+    QAction *maximumAct;
+    QAction *restoreAct;
+    QAction *quitAct;
+
+
+
+    //! menu bar concerned
     QAction *openAct;
     QAction *saveAsAct;
     QAction *printAct;
