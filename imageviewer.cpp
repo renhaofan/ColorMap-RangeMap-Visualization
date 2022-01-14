@@ -7,7 +7,14 @@
 #include <QMessageBox>
 #include <QPrintDialog>
 
-
+/* Qt 5.15
+ * WARNING: 'pixmap' is deprecated: Use the other overload which returns QPixmap by-value
+ * replace imageLabel->pixmap() with imageLabel->pixmap(Qt::ReturnByValue)
+ * replace
+ *    Q_ASSERT(imageLabel->pixmap());
+ * with
+ *    Q_ASSERT(!imageLabel->pixmap(Qt::ReturnByValue).isNull());
+ **/
 
 
 static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
