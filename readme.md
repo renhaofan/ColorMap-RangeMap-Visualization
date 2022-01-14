@@ -1,6 +1,4 @@
-# Visualize Depthmap
-Icon from ![Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-
+# Rangemap Visualization 
 ![demo](https://github.com/renhaofan/colormap/blob/master/images/demo/demoV2.gif)
 
 
@@ -10,11 +8,11 @@ visualize 16bit and 8bit images, 16bit images will be converted to 8bit images b
 
 Requirements
 ============
-* Qt 5.13 (just gray16lib will likely compile with 5.13)
+* Qt version above 5.13 (just gray16lib will likely compile with 5.13)
   * [`QImage::Format_Grayscale16`](https://doc.qt.io/qt-5/qimage.html#Format-enum) was added in Qt 5.13 (released [June 19th, 2019](https://blog.qt.io/blog/2019/06/19/qt-5-13-released/)). References: [QTBUG-41176](http://bugreports.qt.io/browse/QTBUG-41176), [Gerrit patch](https://codereview.qt-project.org/#/c/239203/)
 
-# Package
-[Install package and portable package on windows](https://github.com/renhaofan/colormap/releases) 
+# Log
+add tray mode
 
 
 
