@@ -71,7 +71,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
     trayMenu = new QMenu;
     systemTray = new QSystemTrayIcon;
     systemTray->setIcon(*icon);
-    systemTray->setToolTip("Rangemap Visualization"); // context help
+    systemTray->setToolTip("RangeMap Visualization"); // context help
     minimumAct = new QAction("Minimum Window");
     maximumAct = new QAction("Maximum Window");
     restoreAct = new QAction("Display");
@@ -90,7 +90,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
     systemTray->show();
 
     setWindowIcon(*icon);
-    setWindowTitle(tr("Rangemap Visualization"));
+    setWindowTitle(tr("RangeMap Visualization"));
     resize(1000, 400);
 
 
@@ -485,16 +485,12 @@ void ImageViewer::wheelEvent(QWheelEvent *event)
 
 void ImageViewer::closeEvent(QCloseEvent *event)
 {
-    //! if menu bar exit triggered, exit program, not hide
-    if (exitAct->isChecked())
+    if (systemTray->isVisible())
     {
-        if (systemTray->isVisible())
-        {
-            hide();
-            // display 3 seconds
-            systemTray->showMessage(QString("Tray mode"), QString("Running in tray mode"), QSystemTrayIcon::Information, 3000);
-            event->ignore();
-        }
+        hide();
+        // display 500ms
+        systemTray->showMessage(QString("Tray mode"), QString("Running in tray mode"), QSystemTrayIcon::Information, 500);
+        event->ignore();
     }
 }
 
@@ -562,6 +558,7 @@ void ImageViewer::on_actionSaveAs_triggered()
 void ImageViewer::on_actionAbout_triggered() {
     // text with html, <br> instead of \n
     QString info;
+    info += "Version: 2.1<br>";
     info += "Author: Steve Canvas<br>";
     info += "Emails: yqykrhf@163.com<br>";
     info += "<a href='https://github.com/renhaofan/colormap/'>Github Repo</a>";
