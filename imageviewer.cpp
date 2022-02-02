@@ -489,7 +489,7 @@ void ImageViewer::closeEvent(QCloseEvent *event)
     {
         hide();
         // display 500ms
-        systemTray->showMessage(QString("Tray mode"), QString("Running in tray mode"), QSystemTrayIcon::Information, 500);
+        // systemTray->showMessage(QString("Tray mode"), QString("Running in tray mode"), QSystemTrayIcon::Information, 500);
         event->ignore();
     }
 }
@@ -499,11 +499,10 @@ void ImageViewer::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reas
     switch(reason)
     {
         case QSystemTrayIcon::Trigger:
-            //单击托盘图标
+            // click tray icon
             break;
         case QSystemTrayIcon::DoubleClick:
-            //双击托盘图标
-            //双击后显示主程序窗口
+            // double tray icon, show window
             this->show();
             break;
         default:
