@@ -16,5 +16,6 @@ Version: 2.1
 * add tray mode
 ![tray](https://github.com/renhaofan/colormap/blob/master/images/demo/tray.png)
 
+# TODO
 
 
