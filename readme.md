@@ -17,5 +17,5 @@ Version: 2.1
 ![tray](https://github.com/renhaofan/colormap/blob/master/images/demo/tray.png)
 
 # TODO
-
+copy to clipboard, paste from clipboard
 
